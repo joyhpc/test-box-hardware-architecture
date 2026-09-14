@@ -1,0 +1,251 @@
+{
+  "evidence_scope": "SYNTHETIC ASSUMPTION throughout; device capacity envelope only, no hardware acceptance",
+  "ports": [
+    {
+      "id": "D1",
+      "resource_type": "GT",
+      "lanes": 4
+    },
+    {
+      "id": "D2",
+      "resource_type": "GT",
+      "lanes": 4
+    },
+    {
+      "id": "GOLDEN",
+      "resource_type": "GT",
+      "lanes": 4
+    }
+  ],
+  "additional_channels": [
+    {
+      "resource_type": "GT",
+      "count": 1,
+      "reason": "Host serial channel"
+    },
+    {
+      "resource_type": "GT",
+      "count": 1,
+      "reason": "wired loopback"
+    },
+    {
+      "resource_type": "GT",
+      "count": 2,
+      "reason": "reserved physical channels"
+    }
+  ],
+  "io_groups": [
+    {
+      "id": "LOW_VOLTAGE",
+      "vccio_v": 1.8,
+      "bank_class": "synthetic-compatible",
+      "pins": 72,
+      "pins_per_bank": 40,
+      "reserve_fraction": 0.2
+    },
+    {
+      "id": "CONTROL",
+      "vccio_v": 3.3,
+      "bank_class": "synthetic-compatible",
+      "pins": 24,
+      "pins_per_bank": 40,
+      "reserve_fraction": 0.2
+    }
+  ],
+  "maximum_utilization": 0.7,
+  "functions": [
+    {
+      "id": "deframer",
+      "instances": 3,
+      "lut": [
+        1500,
+        3000
+      ],
+      "ff": [
+        2000,
+        4500
+      ],
+      "dsp": [
+        0,
+        0
+      ],
+      "evidence_type": "ASSUMPTION",
+      "basis": "Invented teaching interval, not vendor data or measured IP cost. Replace with selected IP configuration and synthesis. No pixel arithmetic DSP function assumed."
+    },
+    {
+      "id": "cdc_fifo_control",
+      "instances": 3,
+      "lut": [
+        400,
+        900
+      ],
+      "ff": [
+        700,
+        1300
+      ],
+      "dsp": [
+        0,
+        0
+      ],
+      "evidence_type": "ASSUMPTION",
+      "basis": "Invented teaching interval, not vendor data or measured IP cost. Replace with selected IP configuration and synthesis. No pixel arithmetic DSP function assumed."
+    },
+    {
+      "id": "router",
+      "instances": 1,
+      "lut": [
+        1800,
+        3500
+      ],
+      "ff": [
+        2200,
+        4200
+      ],
+      "dsp": [
+        0,
+        0
+      ],
+      "evidence_type": "ASSUMPTION",
+      "basis": "Invented teaching interval, not vendor data or measured IP cost. Replace with selected IP configuration and synthesis. No pixel arithmetic DSP function assumed."
+    },
+    {
+      "id": "packager",
+      "instances": 1,
+      "lut": [
+        1500,
+        3000
+      ],
+      "ff": [
+        2000,
+        4000
+      ],
+      "dsp": [
+        0,
+        0
+      ],
+      "evidence_type": "ASSUMPTION",
+      "basis": "Invented teaching interval, not vendor data or measured IP cost. Replace with selected IP configuration and synthesis. No pixel arithmetic DSP function assumed."
+    },
+    {
+      "id": "mac_dma",
+      "instances": 1,
+      "lut": [
+        8000,
+        16000
+      ],
+      "ff": [
+        10000,
+        20000
+      ],
+      "dsp": [
+        0,
+        0
+      ],
+      "evidence_type": "ASSUMPTION",
+      "basis": "Invented teaching interval, not vendor data or measured IP cost. Replace with selected IP configuration and synthesis. No pixel arithmetic DSP function assumed."
+    },
+    {
+      "id": "management",
+      "instances": 1,
+      "lut": [
+        800,
+        1800
+      ],
+      "ff": [
+        1200,
+        2600
+      ],
+      "dsp": [
+        0,
+        0
+      ],
+      "evidence_type": "ASSUMPTION",
+      "basis": "Invented teaching interval, not vendor data or measured IP cost. Replace with selected IP configuration and synthesis. No pixel arithmetic DSP function assumed."
+    }
+  ],
+  "buffer": {
+    "hop": "CORE_AGG",
+    "owner": "FPGA",
+    "burst_bytes_per_port": 65536,
+    "metadata_factor": 1
+  },
+  "memory_options": [
+    {
+      "id": "BRAM_ONLY",
+      "nominal_block_bits": 36864,
+      "usable_block_bits": 32768,
+      "packing_efficiency": 0.9,
+      "fixed_blocks": 64,
+      "available_blocks": 512,
+      "mapping_limitations": "Requires actual FIFO width/depth, dual-clock support and per-IP allocation verification."
+    },
+    {
+      "id": "URAM_DATA_ONLY",
+      "nominal_block_bits": 294912,
+      "usable_block_bits": 262144,
+      "packing_efficiency": 0.9,
+      "fixed_blocks": 0,
+      "available_blocks": 96,
+      "mapping_limitations": "Alternative data queues only. Separately requires at least ceil(64/.7)=92 BRAM blocks for fixed IP. URAM is synchronous single-clock; CDC staging, ECC and port/latency mapping remain unresolved.",
+      "auxiliary_pools": [
+        {
+          "id": "BRAM_FIXED_IP",
+          "allocated_blocks": 64,
+          "available_blocks": 128
+        }
+      ]
+    }
+  ],
+  "external_memory": {
+    "capacity_bytes": 134217728,
+    "bus_capacity_bps": 32000000000.0,
+    "traffic_passes": 2,
+    "efficiency": 0.65,
+    "reserve_fraction": 0.2,
+    "auxiliary_pools": [
+      {
+        "id": "BRAM_FIXED_IP",
+        "allocated_blocks": 64,
+        "available_blocks": 128
+      }
+    ]
+  },
+  "production": {
+    "target_duts_per_hour": 45,
+    "cycle_seconds": 120,
+    "availability": 0.9,
+    "ports_per_station": 1,
+    "shared_golden_ports": 1
+  },
+  "power": {
+    "loads": [
+      {
+        "id": "INTERNAL",
+        "output_w": 20,
+        "instances": 1,
+        "efficiency": 0.9,
+        "fraction_heat_outside": 0
+      },
+      {
+        "id": "CAMERA",
+        "output_w": 8,
+        "instances": 3,
+        "efficiency": 0.85,
+        "fraction_heat_outside": 1
+      },
+      {
+        "id": "FAN",
+        "output_w": 3,
+        "instances": 1,
+        "efficiency": 1,
+        "fraction_heat_outside": 0
+      }
+    ],
+    "reserve_fraction": 0.2,
+    "input_voltage_v": 24,
+    "fpga_dissipation_w": 12,
+    "ambient_c": 45,
+    "target_junction_c": 85,
+    "effective_theta_c_per_w": 2.5
+  }
+}

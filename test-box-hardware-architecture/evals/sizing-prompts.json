@@ -1,0 +1,9 @@
+{
+  "scope": "Synthetic inputs for author SELF evaluation; not independent or blind",
+  "prompts": [
+    {"id":"S1","prompt":"给定每小时45 DUT、单工位120秒、availability 0.9，每工位一个Camera端口，测试时共享一路golden且不分时。从用途推导端口数，再用traffic-camera-proposed.json逐跳预算到Host落盘，提出保持10%容量保留的修订。"},
+    {"id":"S2","prompt":"使用resource-camera.json与traffic-camera-sized.json，给出GT、IO Bank、逻辑和BRAM/URAM/DDR的器件容量包络。解释为何有buffer字节数还不能选型号，分别指出算术可行和映射未决。"},
+    {"id":"S3","prompt":"只知道支持五种Camera，不知道并发组合。能否直接宣布总吞吐和需要多少LUT？如果同一物理端口的两种profile被同时激活，如何处理？"},
+    {"id":"S4","prompt":"初始候选Core 8 Gbit/s、Host 10 Gbit/s、磁盘持续900 MB/s，能否靠加FPGA buffer解决？磁盘250 ms停顿是否全部算进FPGA BRAM？"}
+  ]
+}

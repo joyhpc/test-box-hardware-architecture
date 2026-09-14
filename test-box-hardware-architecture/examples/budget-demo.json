@@ -1,0 +1,6 @@
+{
+  "scope": "SYNTHETIC four-camera uncompressed active-pixel example",
+  "width": 1920, "height": 1080, "fps": 60, "bits_per_pixel": 12,
+  "streams": 4, "packet_factor": 1.05, "coding_efficiency": 0.8,
+  "wire_capacity_bps": 8000000000, "reserve_fraction": 0.1, "stall_seconds": 0.002
+}

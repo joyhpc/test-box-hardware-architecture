@@ -1,0 +1,5 @@
+{
+  "scope": "SYNTHETIC change-impact dependencies, not the electrical signal graph",
+  "nodes": [{"id":"SERDES"},{"id":"ADAPTER_DRIVER"},{"id":"LINK_TEST"},{"id":"CORE_API"},{"id":"POWER_ENVELOPE"}],
+  "edges": [{"from":"SERDES","to":"ADAPTER_DRIVER"},{"from":"SERDES","to":"LINK_TEST"},{"from":"SERDES","to":"POWER_ENVELOPE"}]
+}

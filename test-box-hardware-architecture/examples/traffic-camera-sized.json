@@ -1,0 +1,236 @@
+{
+  "schema_version": 2,
+  "evidence_scope": "SYNTHETIC teaching inputs; no company design or measured hardware performance",
+  "streams": [
+    {
+      "id": "D1-A",
+      "port": "D1",
+      "profile": "A",
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "bits_per_pixel": 12,
+      "path": [
+        "INGRESS-D1",
+        "CORE_AGG",
+        "HOST_LINK",
+        "HOST_DMA",
+        "HOST_STORE"
+      ]
+    },
+    {
+      "id": "D1-C",
+      "port": "D1",
+      "profile": "C",
+      "width": 3840,
+      "height": 2160,
+      "fps": 30,
+      "bits_per_pixel": 12,
+      "path": [
+        "INGRESS-D1",
+        "CORE_AGG",
+        "HOST_LINK",
+        "HOST_DMA",
+        "HOST_STORE"
+      ]
+    },
+    {
+      "id": "D1-E",
+      "port": "D1",
+      "profile": "E",
+      "width": 1280,
+      "height": 720,
+      "fps": 120,
+      "bits_per_pixel": 10,
+      "path": [
+        "INGRESS-D1",
+        "CORE_AGG",
+        "HOST_LINK",
+        "HOST_DMA",
+        "HOST_STORE"
+      ]
+    },
+    {
+      "id": "D2-B",
+      "port": "D2",
+      "profile": "B",
+      "width": 2560,
+      "height": 1440,
+      "fps": 30,
+      "bits_per_pixel": 12,
+      "path": [
+        "INGRESS-D2",
+        "CORE_AGG",
+        "HOST_LINK",
+        "HOST_DMA",
+        "HOST_STORE"
+      ]
+    },
+    {
+      "id": "D2-D",
+      "port": "D2",
+      "profile": "D",
+      "width": 1920,
+      "height": 1080,
+      "fps": 120,
+      "bits_per_pixel": 12,
+      "path": [
+        "INGRESS-D2",
+        "CORE_AGG",
+        "HOST_LINK",
+        "HOST_DMA",
+        "HOST_STORE"
+      ]
+    },
+    {
+      "id": "D2-A",
+      "port": "D2",
+      "profile": "A",
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "bits_per_pixel": 12,
+      "path": [
+        "INGRESS-D2",
+        "CORE_AGG",
+        "HOST_LINK",
+        "HOST_DMA",
+        "HOST_STORE"
+      ]
+    },
+    {
+      "id": "GOLDEN-G",
+      "port": "GOLDEN",
+      "profile": "G",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "bits_per_pixel": 12,
+      "path": [
+        "INGRESS-GOLDEN",
+        "CORE_AGG",
+        "HOST_LINK",
+        "HOST_DMA",
+        "HOST_STORE"
+      ]
+    }
+  ],
+  "hops": [
+    {
+      "id": "INGRESS-D1",
+      "from": "D1",
+      "to": "AGG_IN",
+      "capacity_bps": 4000000000.0,
+      "packet_factor": 1.04,
+      "coding_efficiency": 1,
+      "reserve_fraction": 0.1,
+      "stall_seconds": 0,
+      "buffer_owner": "ADAPTER",
+      "capacity_basis": "SYNTHETIC ASSUMPTION: planning capacity; must replace with sustained measurement or applicable guarantee"
+    },
+    {
+      "id": "INGRESS-D2",
+      "from": "D2",
+      "to": "AGG_IN",
+      "capacity_bps": 4000000000.0,
+      "packet_factor": 1.04,
+      "coding_efficiency": 1,
+      "reserve_fraction": 0.1,
+      "stall_seconds": 0,
+      "buffer_owner": "ADAPTER",
+      "capacity_basis": "SYNTHETIC ASSUMPTION: planning capacity; must replace with sustained measurement or applicable guarantee"
+    },
+    {
+      "id": "INGRESS-GOLDEN",
+      "from": "GOLDEN",
+      "to": "AGG_IN",
+      "capacity_bps": 4000000000.0,
+      "packet_factor": 1.04,
+      "coding_efficiency": 1,
+      "reserve_fraction": 0.1,
+      "stall_seconds": 0,
+      "buffer_owner": "ADAPTER",
+      "capacity_basis": "SYNTHETIC ASSUMPTION: planning capacity; must replace with sustained measurement or applicable guarantee"
+    },
+    {
+      "id": "CORE_AGG",
+      "from": "AGG_IN",
+      "to": "FPGA_OUT",
+      "capacity_bps": 10000000000.0,
+      "packet_factor": 1.05,
+      "coding_efficiency": 0.8,
+      "reserve_fraction": 0.1,
+      "stall_seconds": 0.002,
+      "buffer_owner": "FPGA",
+      "capacity_basis": "SYNTHETIC ASSUMPTION: planning capacity; must replace with sustained measurement or applicable guarantee"
+    },
+    {
+      "id": "HOST_LINK",
+      "from": "FPGA_OUT",
+      "to": "HOST_NIC",
+      "capacity_bps": 10000000000.0,
+      "packet_factor": 1.06,
+      "coding_efficiency": 0.9696969696969697,
+      "reserve_fraction": 0.1,
+      "stall_seconds": 0,
+      "buffer_owner": "HOST_LINK",
+      "capacity_basis": "SYNTHETIC ASSUMPTION: planning capacity; must replace with sustained measurement or applicable guarantee"
+    },
+    {
+      "id": "HOST_DMA",
+      "from": "HOST_NIC",
+      "to": "HOST_RAM",
+      "capacity_bps": 8000000000.0,
+      "packet_factor": 1,
+      "coding_efficiency": 1,
+      "reserve_fraction": 0.1,
+      "stall_seconds": 0.005,
+      "buffer_owner": "HOST_RAM",
+      "capacity_basis": "SYNTHETIC ASSUMPTION: planning capacity; must replace with sustained measurement or applicable guarantee"
+    },
+    {
+      "id": "HOST_STORE",
+      "from": "HOST_RAM",
+      "to": "HOST_DISK",
+      "capacity_bps": 8000000000.0,
+      "packet_factor": 1.02,
+      "coding_efficiency": 1,
+      "reserve_fraction": 0.1,
+      "stall_seconds": 0.25,
+      "buffer_owner": "HOST_RAM",
+      "capacity_basis": "SYNTHETIC ASSUMPTION: planning capacity; must replace with sustained measurement or applicable guarantee"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "NORMAL",
+      "active_streams": [
+        "D1-A",
+        "D2-B",
+        "GOLDEN-G"
+      ],
+      "required_sink": "HOST_DISK",
+      "rationale": "Two occupied stations plus shared golden stream; no time multiplexing during acquisition"
+    },
+    {
+      "id": "STRESS",
+      "active_streams": [
+        "D1-C",
+        "D2-D",
+        "GOLDEN-G"
+      ],
+      "required_sink": "HOST_DISK",
+      "rationale": "Two occupied stations plus shared golden stream; no time multiplexing during acquisition"
+    },
+    {
+      "id": "LOW",
+      "active_streams": [
+        "D1-E",
+        "D2-A",
+        "GOLDEN-G"
+      ],
+      "required_sink": "HOST_DISK",
+      "rationale": "Two occupied stations plus shared golden stream; no time multiplexing during acquisition"
+    }
+  ]
+}

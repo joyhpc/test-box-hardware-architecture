@@ -1,0 +1,29 @@
+{
+  "scope": "Anonymized evidence roles only. Source identities, technical values and private fingerprints are not published.",
+  "sources": [
+    {
+      "id": "SRC-P1-REVIEW",
+      "artifact_role": "historical interface/power review",
+      "locator": "partial-power and version-consistency findings",
+      "evidence_scope": "Generalized lesson only; no raw design or independent physical verification published"
+    },
+    {
+      "id": "SRC-P2-SPEC",
+      "artifact_role": "draft video acquisition specification",
+      "locator": "data/control roles and unresolved acceptance criteria",
+      "evidence_scope": "Draft requirement pattern, not confirmed product performance"
+    },
+    {
+      "id": "SRC-P3-CONTROL",
+      "artifact_role": "FPGA adapter control review",
+      "locator": "IO domains and ownership requirements",
+      "evidence_scope": "Generalized contract gaps, not a published pin map or device configuration"
+    },
+    {
+      "id": "SRC-P4-DEBUG",
+      "artifact_role": "digital-interface debug analysis",
+      "locator": "direction validity and layered state-machine reasoning",
+      "evidence_scope": "Methodological summary; original capture values and root-cause claims omitted"
+    }
+  ]
+}

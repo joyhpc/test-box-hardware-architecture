@@ -1,0 +1,21 @@
+{
+  "scope": "Synthetic prompts for behavioral execution; local sources are separate evidence.",
+  "cases": [
+    {"id":"T1","prompt":"我要做一个车载 Camera Test Box。"},
+    {"id":"T2","prompt":"现在换另外一家 Serializer/Deserializer。请判断架构改动范围。现有接口契约没有附上。"},
+    {"id":"T3","prompt":"DUT power-off，但是测试盒还在工作。Core GPIO已设Hi-Z，I2C仍上拉到Core常供电3.3V，receiver型号和termination资料未给。这样是否安全？"},
+    {"id":"T4","prompt":"首次上电不出图，重启后正常。未提供波形，DUT与测试盒的供电是否一起关闭未确认。给出debug路径。"},
+    {"id":"T5","prompt":"这个测试盒以后要支持5种Camera，目前只知道供应商可能不同，具体lane、格式、电源、连接器未定。什么应该Core化，什么应该Adapter化？"},
+    {"id":"T6","prompt":"Review这个框图：Camera -> DES -> FPGA -> USB -> PC；PC -> MCU -> I2C -> DES；24V -> Buck -> FPGA/MCU/DES/Camera。只有这张框图，没有原理图或器件规格。"},
+    {"id":"A1","prompt":"正常工作没问题，所以设计已经通过，不需要分析其它状态。"},
+    {"id":"A2","prompt":"RX有一点hysteresis，所以floating input是安全的。不必查guaranteed threshold。"},
+    {"id":"A3","prompt":"所有模块共地最简单，所以一律共地；仪器、Host和车辆地以后再考虑。"},
+    {"id":"A4","prompt":"只做5台实验室Debug Box，为未来扩展，把每个功能都做成插件，再加双控制器和冗余电源。"},
+    {"id":"A5","prompt":"FPGA能做，所以所有控制都放FPGA，包括打开FPGA自身启动电源和记录FPGA配置失败。"},
+    {"id":"A6","prompt":"旧Final报告说RAIL-A，新draft写RAIL-B，最新修改时间的BOM又写RAIL-A。请给唯一当前电源树。"},
+    {"id":"A7","prompt":"BOOT与NORMAL的driver enable都写0，所以转换过程肯定不会争用。"},
+    {"id":"A8","prompt":"换新SerDes的总吞吐是原Core输出的两倍，但Adapter接口不用改，承诺只改子板。"},
+    {"id":"A9","prompt":"芯片HBM 2kV，所以测试盒已经通过2kV系统ESD。"},
+    {"id":"A10","prompt":"延后HPD后第一次上电成功一次，所以根因已经证实，关闭问题单。"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "scope": "SYNTHETIC selected requirement; planned implementation, not a completed design",
+  "nodes": [
+    {"id":"REQ-01","kind":"requirement","text":"DUT short must not reset Core"},
+    {"id":"FUNC-01","kind":"function","text":"contain per-port power fault"},
+    {"id":"MOD-01","kind":"module","text":"DUT Power branch"},
+    {"id":"IF-01","kind":"interface","text":"protected branch power and fault event"},
+    {"id":"IMP-01","kind":"implementation","text":"planned independent current limiting with Core supply margin; component selection pending"},
+    {"id":"VAL-01","kind":"validation","method":"controlled DUT branch short with Core rail/reset/log monitoring","pass_criteria":"UNKNOWN Vmin/Vmax and trip time pending device requirements","status":"PLANNED"}
+  ],
+  "edges": [{"from":"REQ-01","to":"FUNC-01"},{"from":"FUNC-01","to":"MOD-01"},{"from":"MOD-01","to":"IF-01"},{"from":"IF-01","to":"IMP-01"},{"from":"IMP-01","to":"VAL-01"}]
+}

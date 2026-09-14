@@ -1,0 +1,31 @@
+{
+  "scenario": "SYNTHETIC: AON controller, DUT off versus active. Unknowns are intentional.",
+  "states": {
+    "DUT_OFF": {
+      "CONTROL_TO_DUT": {
+        "power": "Core ON; DUT OFF", "clock": "Core running; DUT clock stopped",
+        "reset": "DUT asserted; pin injection UNKNOWN", "enable": "TX gated by hardware",
+        "gpio": "Hi-Z", "receiver": "UNKNOWN guaranteed output with no driver",
+        "transmitter": "disabled", "termination": "UNKNOWN off-state load",
+        "bias": "UNKNOWN effective differential/common mode", "pulls": "I2C pulled to always-on 3.3V",
+        "ownership": "Core controls power; no permitted TX", "firmware": "Core running",
+        "communication": "DUT commands rejected until power-ready",
+        "protection": "UNKNOWN Ioff coverage", "back_power_risk": "RISK: pull-up injection remains despite Hi-Z",
+        "evidence": "SYNTHETIC eval input; no device measurement"
+      }
+    },
+    "ACTIVE": {
+      "CONTROL_TO_DUT": {
+        "power": "Core ON; DUT ON", "clock": "Both clocks valid per assumed profile",
+        "reset": "released after local ready", "enable": "TX only after grant",
+        "gpio": "open-drain I2C", "receiver": "UNKNOWN exact thresholds",
+        "transmitter": "enabled during grant", "termination": "UNKNOWN actual topology",
+        "bias": "UNKNOWN actual circuit", "pulls": "I2C pulled to always-on 3.3V",
+        "ownership": "Core controls power and bus", "firmware": "Core running",
+        "communication": "configured control access", "protection": "UNKNOWN Ioff coverage",
+        "back_power_risk": "Evaluate shutdown window and asynchronous rail loss",
+        "evidence": "SYNTHETIC eval input; no device measurement"
+      }
+    }
+  }
+}
